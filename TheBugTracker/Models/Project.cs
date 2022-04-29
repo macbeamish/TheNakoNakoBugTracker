@@ -9,7 +9,7 @@ namespace TheBugTracker.Models
         public int Id { get; set; }
 
         [DisplayName("Company")]
-        public int CompanyID { get; set; }
+        public int CompanyId { get; set; }
         
         [Required]
         [StringLength(50)]

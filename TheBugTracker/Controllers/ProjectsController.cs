@@ -50,7 +50,7 @@ namespace TheBugTracker.Controllers
         // GET: Projects/Create
         public IActionResult Create()
         {
-            ViewData["CompanyID"] = new SelectList(_context.Companies, "Id", "Id");
+            ViewData["CompanyId"] = new SelectList(_context.Companies, "Id", "Id");
             ViewData["ProjectPriorityId"] = new SelectList(_context.ProjectPriorities, "Id", "Id");
             return View();
         }
@@ -60,7 +60,7 @@ namespace TheBugTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CompanyID,Name,Description,StartDate,EndDate,ProjectPriorityId,ImageFileName,ImageFileData,ImageContentType,Archived")] Project project)
+        public async Task<IActionResult> Create([Bind("Id,CompanyId,Name,Description,StartDate,EndDate,ProjectPriorityId,ImageFileName,ImageFileData,ImageContentType,Archived")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace TheBugTracker.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CompanyID"] = new SelectList(_context.Companies, "Id", "Id", project.CompanyID);
+            ViewData["CompanyId"] = new SelectList(_context.Companies, "Id", "Id", project.CompanyId);
             ViewData["ProjectPriorityId"] = new SelectList(_context.ProjectPriorities, "Id", "Id", project.ProjectPriorityId);
             return View(project);
         }
@@ -86,7 +86,7 @@ namespace TheBugTracker.Controllers
             {
                 return NotFound();
             }
-            ViewData["CompanyID"] = new SelectList(_context.Companies, "Id", "Id", project.CompanyID);
+            ViewData["CompanyId"] = new SelectList(_context.Companies, "Id", "Id", project.CompanyId);
             ViewData["ProjectPriorityId"] = new SelectList(_context.ProjectPriorities, "Id", "Id", project.ProjectPriorityId);
             return View(project);
         }
@@ -96,7 +96,7 @@ namespace TheBugTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CompanyID,Name,Description,StartDate,EndDate,ProjectPriorityId,ImageFileName,ImageFileData,ImageContentType,Archived")] Project project)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CompanyId,Name,Description,StartDate,EndDate,ProjectPriorityId,ImageFileName,ImageFileData,ImageContentType,Archived")] Project project)
         {
             if (id != project.Id)
             {
@@ -123,7 +123,7 @@ namespace TheBugTracker.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CompanyID"] = new SelectList(_context.Companies, "Id", "Id", project.CompanyID);
+            ViewData["CompanyId"] = new SelectList(_context.Companies, "Id", "Id", project.CompanyId);
             ViewData["ProjectPriorityId"] = new SelectList(_context.ProjectPriorities, "Id", "Id", project.ProjectPriorityId);
             return View(project);
         }
